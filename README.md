@@ -24,9 +24,9 @@ While I did not achieve groundbreaking results through these implementations, th
 
 I invite you to explore the implementations and insights gained from each algorithm:
 
-* [Elastic Weight Consolidation](description\ewc.md)
-* [Synaptic Intelligence (SI)](description\si.md)
-* [Learning Without Forgetting (L2F)](description\l2f.md)
-* [Meta Continual Learning](description\meta_continual_learning.md)
+* ![Elastic Weight Consolidation](description\ewc.md)
+* ![Synaptic Intelligence (SI)](description\si.md)
+* ![Learning Without Forgetting (L2F)](description\l2f.md)
+* ![Meta Continual Learning](description\meta_continual_learning.md)
 
 Your feedback, questions, and contributions are warmly welcomed! Let's advance the field of continual learning together.
