@@ -59,9 +59,9 @@ Catastrophic forgetting occurs because the neural network's weights are updated 
 
 The regularization term is derived from the Fisher information matrix, which measures the sensitivity of the output distribution to changes in the parameters (weights). The EWC loss function is given by:
 
-$$
+```math
 L(\theta) = L_T(\theta) + \sum_i \frac{\lambda}{2} F_i (\theta_i - \theta_{i,old})^2
-$$
+```
 where:
 * $L(\theta)$ is the total loss function with EWC regularization,
 * $L_T(\theta)$ is the loss on the current task
