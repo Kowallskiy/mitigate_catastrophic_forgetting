@@ -54,9 +54,9 @@ p_old = {n: p.clone().detach() for n, p in model.named_parameters() if p.require
 
 Defines the surrogate loss function for SI, calculating the penalty based on changes to important weights since the last task.
 
-$$
+```math
 \mathcal{L}_{\text{SI}} = \sum_{i} \Omega_{i} ( \theta_{i} - \theta_{i, \text{old}} )^2
-$$
+```
 
 where:
 * ${L}_{\text{SI}}$ is the surrogate loss for Synaptic Intelligence
@@ -78,9 +78,9 @@ def surrogate_loss(W, p_old):
 
 Updates the omega parameters after each task, reflecting the importance of each parameter based on how much they contributed to the performance on the current task.
 
-$$
+```math
 \Omega_{i} \leftarrow \Omega_{i} + \frac{\partial \mathcal{L}_{\text{task}}}{\partial \theta_{i}} \Big|_{\theta_{i} = \theta_{i,\text{old}}} \cdot (\theta_{i} - \theta_{i,\text{old}})
-$$
+```
 
 This formula captures the sensitivity of the loss to changes in each parameter, providing a measure of its importance to the learned task.
 
@@ -147,7 +147,7 @@ for i, task_data in enumerate([train_dataloader_task1, train_dataloader_task2]):
 ### Evaluation and Adjustments
 After training the neural network with Synaptic Intelligence on sequential tasks, I dedicated time to thoroughly evaluate the model's performance. This evaluation focused on the model's accuracy across different tasks, specifically looking at how well it retained knowledge from the first task after being trained on the second. To achieve this, I used a validation dataset corresponding to each task and measured the model's accuracy.
 
-The accuracy on the first task after training on the second task served as a critical metric for assessing catastrophic forgetting, a common problem where learning new information leads to a significant degradation of performance on previously learned tasks. Despite the model's ability to learn the second task, I observed that the accuracy on the first task dropped to 13%, indicating a substantial level of forgetting.
+The accuracy on the first task after training on the second task served as a critical metric for assessing catastrophic forgetting, a common problem where learning new information leads to significant degradation of performance on previously learned tasks. Despite the model's ability to learn the second task, I observed that the accuracy on the first task dropped to 13%, indicating a substantial level of forgetting.
 
 Recognizing the need for adjustments, my attention turned to the Synaptic Intelligence regularization coefficient, denoted as c in the code. This coefficient plays a pivotal role in balancing between learning new tasks and retaining information from previous tasks. It controls the strength of the regularization term that penalizes changes to weights that are important for the previous tasks.
 
