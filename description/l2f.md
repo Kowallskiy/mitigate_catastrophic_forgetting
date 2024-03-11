@@ -1,4 +1,4 @@
-# Learning Without Forgetting
+# Learning Without Forgetting (L2F)
 
 ## Introduction
 
@@ -6,15 +6,15 @@ Learning Without Forgetting (L2F) is a strategy designed to enable neural networ
 
 ## Implementation
 
-### Math Behinf the Algorithm
+### Math Behind the Algorithm
 
 #### Distillation Loss
 
 The distillation loss, which helps transfer knowledge from the old task (model) to the new one, can be defined as follows:
 
-$$
+```math
 \mathcal{L}_{distill} = \sum_{i} T^{2} \cdot KL(\sigma(\frac{z_{i}^{old}}{T}) || \sigma(\frac{z_{i}^{new}}{T}))
-$$
+```
 
 Here, $KL$ denotes the Kullback-Leibler divergence, $\sigma$ represents the softmax function, $z_{i}^{old}$ are the logits from the original model, $z_{i}^{new}$ are the logits from the updated model, a $T$ is the temperature parameter that controls the softening of probabilities.
 
@@ -22,9 +22,9 @@ Here, $KL$ denotes the Kullback-Leibler divergence, $\sigma$ represents the soft
 
 The cross-entropy loss for learning the new task is given by:
 
-$$
+```math
 \mathcal{L}_{new} = -\sum_{j} y_{j} \log(p_{j})
-$$
+```
 
 where $y_{j}$ is the true label and $p_{j}$ is the predicted probability for class $j$.
 
@@ -32,9 +32,9 @@ where $y_{j}$ is the true label and $p_{j}$ is the predicted probability for cla
 
 The overall objective that combines the distillation loss with the new task's loss is typically formulated as:
 
-$$
+```math
 \mathcal{L} = (1 - \alpha) \cdot \mathcal{L}_{new} + \alpha \cdot \mathcal{L}_{distill}
-$$
+```
 
 where $\alpha$ is a balancing coefficient that controls the importance of the distillation loss relative to the new task's loss.
 
